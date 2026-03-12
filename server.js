@@ -15,9 +15,13 @@ app.get("/", (req, res) => {
 
 app.get("/scan", (req, res) => {
   const qr = req.query.qr;
+  const lat = req.query.lat;
+  const lng = req.query.lng;
 
   io.emit("new_scan", {
     code: qr,
+    lat: lat,
+    lng: lng,
     time: new Date().toLocaleTimeString(),
   });
 
